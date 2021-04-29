@@ -1,9 +1,7 @@
 # docker-node-mysql-nginx
 Challenge full cycle learning
 
-1. Clone this project
-
-2. Build Images
+1. Build Images
   - Node
     Go to root folder and run:
     docker build -t <your_user>/node15 .
@@ -17,7 +15,10 @@ Challenge full cycle learning
     Go to nginx folder and run:
     docker build -t <your_user>/mysql .
     Back to root folder: cd ..
-    
+ 
+2. Create network
+  - docker network create pfa
+
 3. Create containers
   - Mysql:
     docker run -d --name mysql -p 3306:3306 --network pfa <your_user>/mysql
