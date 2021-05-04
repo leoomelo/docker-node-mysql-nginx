@@ -1,6 +1,14 @@
 # docker-node-mysql-nginx
 Challenge full cycle learning
 
+TAG desafioV2 (current)
+
+  - docker-compose up
+
+
+
+TAG desafioV1
+
 The images are available on dockerhub
 
 1. Create network
