@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysql-compose
+    image: mysql:5.7
+    volumes:
+      - ./dbdata:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+    networks: 
+      - mysql-node-net
+  
+  node15:
+    container_name: nodecontainer
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - mysql
+    networks: 
+      - mysql-node-net
+      - nginx-node-net
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - node15
+    networks: 
+      - nginx-node-net
+  
+networks:
+  mysql-node-net:
+    driver: bridge
+  nginx-node-net:
+    driver: bridge
